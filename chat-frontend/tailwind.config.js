@@ -13,9 +13,6 @@ export default {
       'purple': '#8B46FF',
     },
     extend: {
-      backgroundImage: {
-        'pink-gradient': 'linear-gradient(118deg, rgba(198, 123, 254, 0.12) 12%, #F17383 98.16%)'
-      },
       fontFamily: {
         inter: ["'Inter'", "sans-serif"],
         gelasio: ["'Gelasio'", "serif"]
