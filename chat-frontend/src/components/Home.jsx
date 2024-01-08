@@ -13,7 +13,7 @@ const Home = () => {
             <h2 className="leading-[5rem] text-bold">
               Chatting Beyond... <br />
               Boundaries...
-              <br/>
+              <br />
               WeChat
             </h2>
           </div>
@@ -37,9 +37,77 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="flex mx-5 shadow-2xl">
-          <div className="border h-[35rem] w-[25rem] md:h-[40rem] md:w-[30rem]">
-
+        <div className="mx-5 shadow-2xl rounded-lg">
+          <div className="flex flex-col h-[35rem] w-[20rem] md:h-[40rem] md:w-[30rem] py-5 px-5">
+            <div className="m-5">
+              <h1 className="text-5xl">Join Us !</h1>
+              <p className="text-black mt-2">
+                We're looking for amazing engineers just like you! asdasd
+              </p>
+            </div>
+            <div className="mt-8 mx-0 md:mx-2 w-full">
+              <form className="">
+                <div className="flex flex-col md:flex-row w-full">
+                  <div className="flex flex-col md:mr-3 w-full">
+                    <label htmlFor="firstName" className="text-black">
+                      First Name <span className="text-red">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      id="firstName"
+                      required
+                      className="border-grey outline-none border-2 rounded-md mt-1 px-2 py-1"
+                    />
+                  </div>
+                  <div className="flex flex-col md:mr-3 w-full">
+                    <label htmlFor="firstName" className="text-black">
+                      Last Name <span className="text-red">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      id="firstName"
+                      required
+                      className="border-grey outline-none border-2 rounded-md mt-1 px-2 py-1"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col md:flex-row mt-3">
+                  <div className="flex flex-col md:mr-3 w-full">
+                    <label htmlFor="firstName" className="text-black">
+                      Email address <span className="text-red">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      id="firstName"
+                      required
+                      className="border-grey outline-none border-2 rounded-md mt-1 px-2 py-1"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col md:flex-row mt-3">
+                  <div className="flex flex-col md:mr-3 w-full">
+                    <label htmlFor="firstName" className="text-black">
+                      Password <span className="text-red">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      id="firstName"
+                      required
+                      className="border-grey outline-none border-2 rounded-md mt-1 px-2 py-1"
+                    />
+                  </div>
+                </div>
+                <div className="flex mt-5">
+                  <button className="flex align-center justify-center w-full p-2 rounded-md md:mr-3 bg-blue/90 text-white">
+                    <p>Sign Up</p>
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

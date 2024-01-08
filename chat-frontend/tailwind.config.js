@@ -11,6 +11,7 @@ export default {
       transparent: "transparent",
       twitter: "#1DA1F2",
       purple: "#8B46FF",
+      blue:"#4299E1"
     },
     extend: {
       zIndex: {
