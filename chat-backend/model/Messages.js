@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const messageSchema = mongoose.Schema({
   timestamps: {
-    createdAt: "joinedAt",
+    joinedAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now },
   },
 });
 

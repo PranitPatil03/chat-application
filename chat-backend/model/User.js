@@ -1,37 +1,18 @@
 import mongoose from "mongoose";
-
-let profile_imgs_name_list = [
-  "Garfield",
-  "Tinkerbell",
-  "Annie",
-  "Loki",
-  "Cleo",
-  "Angel",
-  "Bob",
-  "Mia",
-  "Coco",
-  "Gracie",
-  "Bear",
-  "Bella",
-  "Abby",
-  "Harley",
-  "Cali",
-  "Leo",
-  "Luna",
-  "Jack",
-  "Felix",
-  "Kiki",
-];
+import {
+  profile_imgs_name_list,
+  profile_imgs_collections_list,
+} from "../constants/constants.js";
 
 const userSchema = mongoose.Schema({
   personal_info: {
-    fullName: {
+    firstName: {
       type: String,
       lowercase: true,
       required: true,
       minlength: [3, "fullName must be 3 letters long"],
     },
-    LastName: {
+    lastName: {
       type: String,
       lowercase: true,
       required: true,
@@ -72,18 +53,19 @@ const userSchema = mongoose.Schema({
       },
     },
   },
-  messages: {
-    default: {},
-    ref: "messages",
-    lowercase: true,
-    type: [Schema.Types.ObjectId],
-  },
+  // messages: {
+  //   // TODO:Change the Type of messages
+  //   type: String,
+  //   default: {},
+  //   lowercase: true,
+  // },
   google_auth: {
     type: Boolean,
     default: false,
   },
   timestamps: {
-    createdAt: "joinedAt",
+    joinedAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now },
   },
 });
 

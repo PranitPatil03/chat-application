@@ -11,7 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "name": "chat-backend",
   "version": "1.0.0",
