@@ -1,14 +1,58 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/jsx-no-comment-textnodes */
 import Navbar from "./Navbar";
 import { googleIcon } from "../assets/index.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Hero from "../common/Hero.jsx";
+import toast, { Toaster } from "react-hot-toast";
+import { emailRegex, passwordRegex } from "../../constants/constants.js";
+import axios from "axios";
 
 const Login = () => {
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    
-  }
+  const handleCreateUser = async (serverRoute, formData) => {
+    try {
+      const { data } = await axios.post(
+        import.meta.env.VITE_SERVER_DOMAIN + "auth" + serverRoute,
+        formData
+      );
+      console.log("Data ==>", data);
+      navigate("/success");
+    } catch (error) {
+      toast.error(error?.response?.data.error);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = new FormData(FormElement);
+
+    let formData = {};
+
+    for (let [key, value] of form.entries()) {
+      formData[key] = value;
+    }
+
+    console.log("FormData:", formData);
+
+    const { email, password } = formData;
+
+    if (!email.length) {
+      return toast.error("Enter Mail");
+    }
+
+    if (!emailRegex.test(email)) {
+      return toast.error("Mail is Invalid");
+    }
+
+    if (!passwordRegex.test(password)) {
+      return toast.error("Password is Invalid");
+    }
+
+    handleCreateUser("/login", formData);
+  };
 
   return (
     <>
@@ -26,16 +70,17 @@ const Login = () => {
               </p>
             </div>
             <div className="mt-1 mx-0 md:mx-2 w-full">
-              <form className="">
+              <Toaster />
+              <form id="FormElement" onSubmit={handleSubmit}>
                 <div className="flex flex-col md:flex-row mt-3">
                   <div className="flex flex-col md:mr-3 w-full">
                     <label htmlFor="firstName" className="text-black">
                       Email address <span className="text-red">*</span>
                     </label>
                     <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
+                      type="email"
+                      name="email"
+                      id="email"
                       required
                       className="border-grey outline-none border-2 rounded-md mt-1 px-3 py-2 md:px-2 md:py-1"
                     />
@@ -47,17 +92,18 @@ const Login = () => {
                       Password <span className="text-red">*</span>
                     </label>
                     <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
+                      type="password"
+                      name="password"
+                      id="password"
                       required
                       className="border-grey outline-none border-2 rounded-md mt-1 px-3 py-2 md:px-2 md:py-1"
                     />
                   </div>
                 </div>
                 <div className="flex mt-5">
-                  <button className="flex align-center justify-center w-full p-2 rounded-md md:mr-3 bg-blue/90 text-white"
-                    onClick={handleLogin}
+                  <button
+                    type="submit"
+                    className="flex align-center justify-center w-full p-2 rounded-md md:mr-3 bg-blue/90 text-white"
                   >
                     <p>Login</p>
                   </button>

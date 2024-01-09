@@ -1,17 +1,78 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-undef */
 /* eslint-disable react/jsx-no-comment-textnodes */
 import Navbar from "./Navbar";
 import { googleIcon } from "../assets/index.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Hero from "../common/Hero.jsx";
+import { emailRegex, passwordRegex } from "../../constants/constants.js";
+import { Toaster, toast } from "react-hot-toast";
+import axios from "axios";
 
 const Home = () => {
+   const navigate = useNavigate();  
+
+  const handleCreateUser = async (serverRoute, formData) => {
+    try {
+      const { data } = await axios.post(
+        import.meta.env.VITE_SERVER_DOMAIN + "auth" + serverRoute,
+        formData
+      );
+      console.log("Data ==>", data);
+      navigate("/success");
+    } catch (error) {
+      toast.error(error?.response?.data.error);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = new FormData(FormElement);
+
+    let formData = {};
+
+    for (let [key, value] of form.entries()) {
+      formData[key] = value;
+    }
+
+    console.log("FormData:", formData);
+
+    const { firstName, lastName, email, password } = formData;
+
+    if (firstName) {
+      if (firstName.length < 3) {
+        return toast.error("FullName must be at least 3 Letters long");
+      }
+    }
+    if (lastName) {
+      if (lastName.length < 3) {
+        return toast.error("FullName must be at least 3 Letters long");
+      }
+    }
+
+    if (!email.length) {
+      return toast.error("Enter Mail");
+    }
+
+    if (!emailRegex.test(email)) {
+      return toast.error("Mail is Invalid");
+    }
+
+    if (!passwordRegex.test(password)) {
+      return toast.error("Password is Invalid");
+    }
+
+    handleCreateUser("/signup", formData);
+  };
+
   return (
     <>
       <Navbar />
 
       <div className="flex flex-col xl:flex-row items-center gap-[3rem] xl:gap-[20rem] py-8 px-[15vw] my-8">
         <Hero />
-
+        <Toaster />
         <div className="mx-5 shadow-2xl rounded-lg">
           <div className="flex flex-col h-[45rem] w-[20rem] md:h-[39rem] md:w-[30rem] py-5 px-5">
             <div className="m-5">
@@ -21,7 +82,7 @@ const Home = () => {
               </p>
             </div>
             <div className="mt-3 mx-0 md:mx-2 w-full">
-              <form className="">
+              <form id="FormElement" onSubmit={handleSubmit}>
                 <div className="flex flex-col md:flex-row w-full ">
                   <div className="flex flex-col md:mr-3 w-full">
                     <label htmlFor="firstName" className="text-black">
@@ -41,8 +102,8 @@ const Home = () => {
                     </label>
                     <input
                       type="text"
-                      name="firstName"
-                      id="firstName"
+                      name="lastName"
+                      id="lastName"
                       required
                       className="border-grey outline-none border-2 rounded-md mt-1 px-3 py-2 md:px-2 md:py-1"
                     />
@@ -54,9 +115,9 @@ const Home = () => {
                       Email address <span className="text-red">*</span>
                     </label>
                     <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
+                      type="email"
+                      name="email"
+                      id="email"
                       required
                       className="border-grey outline-none border-2 rounded-md mt-1 px-3 py-2 md:px-2 md:py-1"
                     />
@@ -68,16 +129,19 @@ const Home = () => {
                       Password <span className="text-red">*</span>
                     </label>
                     <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
+                      type="password"
+                      name="password"
+                      id="password"
                       required
                       className="border-grey outline-none border-2 rounded-md mt-1 px-3 py-2 md:px-2 md:py-1"
                     />
                   </div>
                 </div>
                 <div className="flex mt-5">
-                  <button className="flex align-center justify-center w-full p-2 rounded-md md:mr-3 bg-blue/90 text-white">
+                  <button
+                    type="submit"
+                    className="flex align-center justify-center w-full p-2 rounded-md md:mr-3 bg-blue/90 text-white"
+                  >
                     <p>Sign Up</p>
                   </button>
                 </div>
