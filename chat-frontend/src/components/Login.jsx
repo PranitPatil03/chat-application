@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 import Hero from "../common/Hero.jsx";
 
 const Login = () => {
+
+  const handleLogin = () => {
+    
+  }
+
   return (
     <>
       <Navbar />
@@ -51,7 +56,9 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="flex mt-5">
-                  <button className="flex align-center justify-center w-full p-2 rounded-md md:mr-3 bg-blue/90 text-white">
+                  <button className="flex align-center justify-center w-full p-2 rounded-md md:mr-3 bg-blue/90 text-white"
+                    onClick={handleLogin}
+                  >
                     <p>Login</p>
                   </button>
                 </div>
