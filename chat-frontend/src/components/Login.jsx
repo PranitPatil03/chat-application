@@ -18,7 +18,7 @@ const Login = () => {
         formData
       );
       console.log("Data ==>", data);
-      navigate("/success");
+      navigate("/chat");
     } catch (error) {
       toast.error(error?.response?.data.error);
     }

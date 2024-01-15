@@ -12,7 +12,8 @@ export default {
       twitter: "#1DA1F2",
       purple: "#8B46FF",
       blue: "#4299E1",
-      whiteOff:"#F7FAFC"
+      whiteOff: "#F7FAFC",
+      "light-grey": "#DBDDE1",
     },
     extend: {
       zIndex: {
