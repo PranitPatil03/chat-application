@@ -73,7 +73,9 @@ export const createUser = async (req, res) => {
     if (error.code === 11000) {
       return res.status(500).json({ error: "This email is already exists" });
     }
-    return res.status(500).json({ error: error.message });
+    return res
+      .status(500)
+      .json({ error: "Resignation failed some error happened" });
   }
 };
 

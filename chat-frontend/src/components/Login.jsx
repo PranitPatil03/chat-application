@@ -2,14 +2,22 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import Navbar from "./Navbar";
 import { googleIcon } from "../assets/index.js";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Hero from "../common/Hero.jsx";
 import toast, { Toaster } from "react-hot-toast";
 import { emailRegex, passwordRegex } from "../../constants/constants.js";
 import axios from "axios";
+import UserContext from "../context/UserContext.js";
+import { useContext } from "react";
+import { StoreSession } from "../common/Session.jsx";
 
 const Login = () => {
-  const navigate = useNavigate();
+  const {
+    userAuth: { accessToken },
+    setUserAuth,
+  } = useContext(UserContext);
+
+  console.log("AccessToken", accessToken);
 
   const handleCreateUser = async (serverRoute, formData) => {
     try {
@@ -18,7 +26,8 @@ const Login = () => {
         formData
       );
       console.log("Data ==>", data);
-      navigate("/chat");
+      StoreSession("user", JSON.stringify(data));
+      setUserAuth(data);
     } catch (error) {
       toast.error(error?.response?.data.error);
     }
@@ -54,7 +63,9 @@ const Login = () => {
     handleCreateUser("/login", formData);
   };
 
-  return (
+  return accessToken ? (
+    <Navigate to="/chat" />
+  ) : (
     <>
       <Navbar />
 

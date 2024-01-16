@@ -8,9 +8,14 @@ import Hero from "../common/Hero.jsx";
 import { emailRegex, passwordRegex } from "../../constants/constants.js";
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
+import { useContext } from "react";
+import UserContext from "../context/UserContext.js";
+import { StoreSession } from "../common/Session.jsx";
 
 const Home = () => {
-   const navigate = useNavigate();  
+  const navigate = useNavigate();
+
+  const { setUserAuth } = useContext(UserContext);
 
   const handleCreateUser = async (serverRoute, formData) => {
     try {
@@ -19,7 +24,10 @@ const Home = () => {
         formData
       );
       console.log("Data ==>", data);
-      navigate("/success");
+      StoreSession("user", JSON.stringify(data));
+      setUserAuth(data);
+      toast.success("Register Successfully");
+      navigate("/login");
     } catch (error) {
       toast.error(error?.response?.data.error);
     }
