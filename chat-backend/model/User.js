@@ -53,6 +53,10 @@ const userSchema = mongoose.Schema({
       },
     },
   },
+  userStatus: {
+    type: Boolean,
+    default: false
+  },
   // messages: {
   //   // TODO:Change the Type of messages
   //   type: String,

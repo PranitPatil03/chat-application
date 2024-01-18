@@ -4,14 +4,18 @@
 # {  
 #     "firstName":"pranit1",
 #     "lastName": "patil1",
+#     "email":"demo23@gmail.com", 
+#     "password":"Demo123*" 
+# }
+
+# POST http://localhost:3000/auth/login
+# Content-Type: application/json
+
+# {  
 #     "email":"demo3@gmail.com", 
 #     "password":"Demo123*" 
 # }
 
-POST http://localhost:3000/auth/login
+GET  http://localhost:3000/chat/user-status
 Content-Type: application/json
-
-{  
-    "email":"demo3@gmail.com", 
-    "password":"Demo123*" 
-}
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YTk0MGZkZTUxYTRjNTMyNWY5OTk5YSIsImlhdCI6MTcwNTU5MTAzN30.cV6iQ_E0pwuD8TAH-G34H6ChskbMmR989qN_juuPM7c

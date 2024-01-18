@@ -8,7 +8,7 @@ import { LookInSession } from "./common/Session.jsx";
 
 /* Tasks
 
-  1. Store the User in the session 
+  1. Store the User in the session ✅
   2. Using the user status (new/old)
       - display empty or previous user chats or channels
       -  
