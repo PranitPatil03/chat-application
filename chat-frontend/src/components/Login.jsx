@@ -73,7 +73,7 @@ const Login = () => {
     <>
       <Navbar />
 
-      <section className="">
+      <section className="h-cover flex items-center justify-center">
         <Toaster />
         <form id="FormElement" className="w-[90%] md:w-[35%] max-w-250px">
           <h1 className="text-4xl font-gelasio capitalize text-center mb-24">

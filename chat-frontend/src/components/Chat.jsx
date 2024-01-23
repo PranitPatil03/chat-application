@@ -1,9 +1,5 @@
 const Chat = () => {
-  return (
-    <div className="flex border-3 border h-[90%] flex-[0.8]">
-      sdasdas
-    </div>
-  )
-}
+  return <div className="flex w-[90%] h-full flex-[0.75] "></div>;
+};
 
-export default Chat
+export default Chat;

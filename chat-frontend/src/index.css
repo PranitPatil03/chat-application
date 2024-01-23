@@ -15,11 +15,7 @@
   }
 
   body {
-    @apply font-gelasio font-normal text-black ;
-  }
-
-  .main{
-     @apply bg-light-grey flex justify-center items-center mt-5
+    @apply font-gelasio font-normal text-black;
   }
 
   i {

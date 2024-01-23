@@ -9,9 +9,11 @@ const InputBox = ({
   placeholder,
   icon,
   disabled = false,
-  className
+  classes
 }) => {
   const [passwordVisible, SetPasswordVisible] = useState(false);
+
+  console.log(classes)
 
   return (
     <>
@@ -24,7 +26,7 @@ const InputBox = ({
           defaultValue={value}
           id={id}
           placeholder={placeholder}
-          className={"input-box " + className}
+          className={`input-box  ${classes}`}
           disabled={disabled}
         />
 
