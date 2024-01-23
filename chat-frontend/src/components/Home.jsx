@@ -78,7 +78,7 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div className="flex flex-col xl:flex-row items-center gap-[3rem] xl:gap-[20rem] py-8 px-[15vw] my-8">
+      {/* <div className="flex flex-col xl:flex-row items-center gap-[3rem] xl:gap-[20rem] py-8 px-[15vw] my-8">
         <Hero />
         <Toaster />
         <div className="mx-5 shadow-2xl rounded-lg">
@@ -171,9 +171,12 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+
+
     </>
   );
+
 };
 
 export default Home;

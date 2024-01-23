@@ -19,7 +19,6 @@ function App() {
   const [userAuth, setUserAuth] = useState({});
 
   useEffect(() => {
-    // Get any existing user data from session storage if available
     const userInSession = LookInSession("user");
 
     userInSession
