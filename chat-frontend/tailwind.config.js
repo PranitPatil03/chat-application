@@ -3,6 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
+
       white: "#FFFFFF",
       black: "#242424",
       grey: "#F3F3F3",
@@ -13,7 +14,7 @@ export default {
       purple: "#8B46FF",
       blue: "#4299E1",
       whiteOff: "#F7FAFC",
-      "light-grey": "#DBDDE1",
+      "light-grey": "#f4f5f8",
     },
     extend: {
       zIndex: {

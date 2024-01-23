@@ -5,6 +5,7 @@ import ChatPage from "./pages/ChatPage.jsx";
 import { useEffect, useState } from "react";
 import UserContext from "./context/UserContext.js";
 import { LookInSession } from "./common/Session.jsx";
+import Main from "./pages/Main.jsx";
 
 /* Tasks
 
@@ -32,7 +33,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="signup" element={<Home />} />
         <Route path="login" element={<Login />} />
-        <Route path="chat" element={<ChatPage />} />
+        <Route path="chat" element={<Main />} />
       </Routes>
     </UserContext.Provider>
   );
