@@ -17,7 +17,7 @@ const InputBox = ({
 
   return (
     <>
-      <div className="relative w-[100%] mb-4">
+      <div className="relative w-[100%]">
         <input
           name={name}
           type={

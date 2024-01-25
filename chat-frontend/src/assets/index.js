@@ -9,5 +9,7 @@ import userPic from "../assets/userPic.png";
 import googleIcon from "../assets/googleIcon.png";
 import UserProfile from "../assets/UserProfile.png";
 import UserProfile1 from "../assets/UserProfile1.jpg";
+import SendBtn from "../assets/SendBtn.png";
 
-export { logo, user1, user2, user3, user4, user5,user6,googleIcon,userPic, UserProfile,UserProfile1};
+
+export { logo, user1, user2, user3, user4, user5,user6,googleIcon,userPic, UserProfile,UserProfile1,SendBtn};

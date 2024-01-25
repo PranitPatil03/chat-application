@@ -64,8 +64,7 @@ const Login = () => {
     handleCreateUser("/login", formData);
   };
 
-  const handleGoogleAuth = () => {
-  }
+  const handleGoogleAuth = () => {};
 
   return accessToken ? (
     <Navigate to="/chat" />
@@ -121,7 +120,6 @@ const Login = () => {
               Join Now
             </Link>
           </p>
-        
         </form>
       </section>
     </>

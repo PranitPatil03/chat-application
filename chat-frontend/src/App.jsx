@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
-import ChatPage from "./pages/ChatPage.jsx";
 import { useEffect, useState } from "react";
 import UserContext from "./context/UserContext.js";
 import { LookInSession } from "./common/Session.jsx";
@@ -18,6 +17,7 @@ import Main from "./pages/Main.jsx";
 
 function App() {
   const [userAuth, setUserAuth] = useState({});
+  const [chat, setChat] = useState({});
 
   useEffect(() => {
     const userInSession = LookInSession("user");
@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={{ userAuth, setUserAuth }}>
+    <UserContext.Provider value={{ userAuth, setUserAuth ,chat, setChat}}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="signup" element={<Home />} />
