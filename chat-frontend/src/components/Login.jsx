@@ -84,6 +84,7 @@ const Login = () => {
             type="email"
             placeholder="Email"
             icon="fi-rr-envelope"
+            classes="mb-4"
           />
 
           <InputBox

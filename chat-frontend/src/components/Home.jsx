@@ -92,6 +92,7 @@ const Home = () => {
             type="text"
             placeholder="Full Name"
             icon="fi-rr-user"
+            classes="mb-4"
           />
 
           <InputBox
@@ -99,6 +100,7 @@ const Home = () => {
             type="email"
             placeholder="Email"
             icon="fi-rr-envelope"
+            classes="mb-4"
           />
 
           <InputBox
@@ -128,13 +130,13 @@ const Home = () => {
           >
             <img src={googleIcon} className="w-5" /> continue with Google
           </button>
-         
+
           <p className="mt-6 text-dark-grey text-xl text-center">
             Already a member ?
             <Link to="/login" className="underline text-black text-xl ml-1">
               Sign in here
             </Link>
-          </p> 
+          </p>
         </form>
       </section>
     </>

@@ -107,7 +107,7 @@ const Sidebar = ({ onDataChange }) => {
               <img src={profile_img} className="w-10 h-10 rounded-full" />
               <p className="text-base">{userName}</p>
             </div>
-            <p className="text-sm hidden xl:block">12:32 AM</p>
+            <p className="text-sm hidden xl:block ">12:32 AM</p>
           </button>
           <div className="flex flex-row items-center gap-4 justify-between ">
             <div className="flex flex-row items-center gap-4">
