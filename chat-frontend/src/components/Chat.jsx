@@ -3,30 +3,23 @@ import UserContext from "../context/UserContext";
 import UserNavbar from "../common/UserNavbar";
 import { SendBtn } from "../assets";
 import io from "socket.io-client";
-const socket = io("http://localhost:3000");
+const socket = io();
 
 const Chat = ({ showUserNavbar }) => {
   const {
-    userAuth: { accessToken, userName, profile_img },
+    userAuth,userAuth: { accessToken, userName, profile_img },
   } = useContext(UserContext);
 
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [currentUser, setCurrentUser] = useState(userName);
 
-  useEffect(() => {
-    socket.emit("joinRoom", currentUser);
 
-    socket.on("newMessage", (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, [currentUser]);
+    useEffect(() => {
+      socket.emit("setup", userAuth)
+  }, [])
 
   const sendMessage = () => {
+    alert("herer1")
     if (newMessage === "") {
       return;
     }
@@ -52,11 +45,7 @@ const Chat = ({ showUserNavbar }) => {
 
             <div className="h-[80%] w-full">
               <div className="p-4 h-[90%] mb-4">
-                {messages.map((message, index) => (
-                  <div key={index} className="mb-2">
-                    <strong>{message.from}:</strong> {message.content}
-                  </div>
-                ))}
+                
               </div>
             </div>
 

@@ -1,20 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import InputBox from "../common/InputBox";
 import { UserProfile1 } from "../assets";
 import { RemoveSession } from "../common/Session";
 import UserContext from "../context/UserContext";
 import toast, { Toaster } from "react-hot-toast";
 import UserCard from "../common/UserCard";
+import axios from "axios";
 
 const Sidebar = ({ onDataChange }) => {
   const {
-    userAuth: { accessToken, userName, profile_img},
+    userAuth: { accessToken, userName, profile_img },
   } = useContext(UserContext);
+
+  console.log(accessToken);
 
   const [showSideBar, setShowSideBar] = useState(false);
   const [showUserSearchBar, setShowUserSearchBar] = useState(false);
 
-  const [showUserProfileNavbar,setShowUserProfileNavbar] = useState(false);
+  const [allUser, setAllUser] = useState([]);
+
+  const [showUserProfileNavbar, setShowUserProfileNavbar] = useState(false);
 
   const showUserSearchBox = () => {
     setShowUserSearchBar((prev) => !prev);
@@ -25,11 +30,45 @@ const Sidebar = ({ onDataChange }) => {
     toast.success("You has been sign out successfully");
   };
 
-  const handleUserProfileClick = () => {
-    setShowUserProfileNavbar(prev=>!prev)
+  const handleUserProfileClick = (e) => {
+    console.log(e.target);
+    console.log(e.target.value);
+    const targetID = e.target.innerHTML;
+
+    if (targetID.tagName == 'IMG') { 
+      console.log(targetID.tagName)
+    }
+
+
+    setShowUserProfileNavbar((prev) => !prev);
     onDataChange(showUserProfileNavbar);
   };
 
+  const fetchAllUser = () => {
+    axios
+      .post(
+        import.meta.env.VITE_SERVER_DOMAIN + "user/fetchAllUsers",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
+      .then(({ data }) => {
+        console.log(data);
+        setAllUser(data.user);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  console.log(allUser);
+
+  useEffect(() => {
+    fetchAllUser();
+  }, []);
 
   return (
     <>
@@ -102,34 +141,24 @@ const Sidebar = ({ onDataChange }) => {
         </div>
 
         <div className="flex flex-col px-5 py-2 mt-2 pb-3 gap-5">
-          <button className="flex flex-row items-center gap-4 justify-between" onClick={handleUserProfileClick}>
-            <div className="flex flex-row items-center gap-4">
-              <img src={profile_img} className="w-10 h-10 rounded-full" />
-              <p className="text-base">{userName}</p>
-            </div>
-            <p className="text-sm hidden xl:block ">12:32 AM</p>
-          </button>
-          <div className="flex flex-row items-center gap-4 justify-between ">
-            <div className="flex flex-row items-center gap-4">
-              <img src={profile_img} className="w-10 h-10 rounded-full" />
-              <p className="text-base">{userName}</p>
-            </div>
-            <p className="text-sm hidden xl:block">12:32 AM</p>
-          </div>
-          <div className="flex flex-row items-center gap-4 justify-between ">
-            <div className="flex flex-row items-center gap-4">
-              <img src={profile_img} className="w-10 h-10 rounded-full" />
-              <p className="text-base">{userName}</p>
-            </div>
-            <p className="text-sm hidden xl:block">12:32 AM</p>
-          </div>
-          <div className="flex flex-row items-center gap-4 justify-between ">
-            <div className="flex flex-row items-center gap-4">
-              <img src={profile_img} className="w-10 h-10 rounded-full" />
-              <p className="text-base">{userName}</p>
-            </div>
-            <p className="text-sm hidden xl:block">12:32 AM</p>
-          </div>
+          {allUser.map((users, i) => {
+            return (
+              <button
+                key={i}
+                className="flex flex-row items-center gap-4 justify-between"
+                onClick={(e) => handleUserProfileClick(e)}
+              >
+                <div className="flex flex-row items-center gap-4">
+                  <img
+                    src={users.personal_info.profile_img}
+                    className="w-10 h-10 rounded-full"
+                  />
+                  <p className="text-sm">{users.personal_info.userName}</p>
+                </div>
+                <p className="text-sm hidden xl:block line-clamp-1">12:32 AM</p>
+              </button>
+            );
+          })}
         </div>
       </div>
 
