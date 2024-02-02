@@ -2,9 +2,9 @@
 # Content-Type: application/json
 
 # {  
-#     "firstName":"pranit1",
-#     "lastName": "patil1",
-#     "email":"demo23@gmail.com", 
+#     "firstName":"new1",
+#     "lastName": "new2",
+#     "email":"new3@gmail.com", 
 #     "password":"Demo123*" 
 # }
 
@@ -16,6 +16,6 @@
 #     "password":"Demo123*" 
 # }
 
-GET  http://localhost:3000/chat/user-status
+POST  http://localhost:3000/user/fetchAllUsers
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YTk0MGZkZTUxYTRjNTMyNWY5OTk5YSIsImlhdCI6MTcwNTU5MTAzN30.cV6iQ_E0pwuD8TAH-G34H6ChskbMmR989qN_juuPM7c
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YmQxNjM0YzMwZmI4NzM5YTljN2M3MiIsImlhdCI6MTcwNjg5MDgwNH0.Bg9e25qlGss4iqupc_j9g3B81c2wNKIaHANBpta_7ww
